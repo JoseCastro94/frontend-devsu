@@ -1,12 +1,12 @@
-# Version del Proyecto
+# Versión del Proyecto
 
 [Angular CLI](https://github.com/angular/angular-cli) version 16.0.4.
 
-## Ejecucion del proyecto
+## Ejecución del proyecto
 
 ng serve --o
 
-## Ejecucion Coverage
+## Ejecución Coverage
 
 ng test --code-coverage
 
