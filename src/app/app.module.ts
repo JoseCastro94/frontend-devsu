@@ -36,6 +36,9 @@ import { NgToastModule } from 'ng-angular-popup'
     CommonModule,
     NgToastModule
   ],
+  exports:[
+    FiltroPipe
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS ,

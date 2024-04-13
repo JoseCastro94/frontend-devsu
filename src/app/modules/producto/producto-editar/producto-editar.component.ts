@@ -5,6 +5,7 @@ import { Producto } from 'src/app/core/models/producto';
 import { DataService } from 'src/app/core/services/data.service';
 import { ProductoService } from 'src/app/core/services/producto.service';
 import { ToastService } from 'src/app/core/services/toast.service';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-producto-editar',
@@ -15,6 +16,7 @@ export class ProductoEditarComponent implements OnInit{
   productos: Producto [] = [];
   producto: Producto = new Producto();
   minFechaRevision: string = '';
+  isLoading: boolean = false;
 
   constructor(private productoService: ProductoService,
     private router: Router,
@@ -49,21 +51,28 @@ export class ProductoEditarComponent implements OnInit{
   }
 
   fnGuardar(myForm: NgForm){
-    this.productoService.EditarDatos(this.producto).subscribe({
+    this.isLoading = true;
+    this.productoService.EditarDatos(this.producto).pipe(
+      finalize(() => {
+        this.isLoading = false;
+      })
+    ).subscribe({
       next: (data) =>{
         this.toast.success('Producto editado.');
         this.router.navigate(['/listar']);
-      },error: (e) =>{
+      },
+      error: (e) =>{
         this.toast.error('Ups! No se pudo editar producto.');
         console.log(e);
       }
-    })
+    });
   }
 
   fnValidarFechaLiberacion(form: NgForm) {
     const fechaLiberacion: Date = new Date(form.value.fechaLiberacion);
     const fechaActual = new Date();
-
+    fechaActual.setDate(fechaActual.getDate() - 1);
+    
     if (fechaLiberacion < fechaActual) {
       form.controls['fechaLiberacion'].setErrors({'fechaInvalida': true });
     } else {

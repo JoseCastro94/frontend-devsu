@@ -84,7 +84,11 @@
             <button type="reset" class="btn btn-reiniciar">Reiniciar</button>
           </div>
           <div class="col-md-6">
-            <button type="submit" class="btn btn-enviar" [disabled]="!datosForm.form.valid">Enviar</button>
+            <button type="submit" class="btn btn-enviar"
+            [disabled]="!datosForm.form.valid">
+              <span *ngIf="!isLoading"> Enviar</span>
+              <span *ngIf="isLoading"><i class="fa fa-spinner spinner" *ngIf="isLoading"></i> Enviando</span>
+            </button>
           </div>
         </div>
 

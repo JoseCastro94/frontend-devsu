@@ -5,5 +5,5 @@ export class Producto{
   public logo = '';
   public date_release?: string;
   public date_revision?: string;
-  public showMenu: boolean =  false;
+  public showMenu?: boolean =  false;
 }
