@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Producto } from 'src/app/core/models/producto';
 import { ProductoService } from 'src/app/core/services/producto.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 
 @Component({
   selector: 'app-producto-registrar',
@@ -14,7 +15,8 @@ export class ProductoRegistrarComponent implements OnInit{
   minFechaRevision: string = '';
 
   constructor(private productoService: ProductoService,
-    private router: Router
+    private router: Router,
+    private toast: ToastService
   ) { }
 
   ngOnInit(): void {
@@ -23,9 +25,10 @@ export class ProductoRegistrarComponent implements OnInit{
   fnGuardar(myForm: NgForm){
     this.productoService.GuardarDatos(this.producto).subscribe({
       next: (data) =>{
+        this.toast.success('Producto registrado.');
         this.router.navigate(['/listar']);
       },error: (e) =>{
-        alert('No se pudo registrar.');
+        this.toast.error('Ups! No se pudo registrar producto.');
         console.log(e);
       }
     })
@@ -37,10 +40,10 @@ export class ProductoRegistrarComponent implements OnInit{
         if(data == false){
           this.fnGuardar(myForm);
         }else{
-          alert('El id del producto ya existe!');
+          this.toast.info('El id del producto ya existe!');
         }
       },error: (e) =>{
-        alert('No se pudo verificar producto.');
+        this.toast.error('No se pudo verificar producto.');
         console.log(e);
       }
     })

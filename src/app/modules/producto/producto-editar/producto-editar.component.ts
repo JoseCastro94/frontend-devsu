@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Producto } from 'src/app/core/models/producto';
 import { DataService } from 'src/app/core/services/data.service';
 import { ProductoService } from 'src/app/core/services/producto.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 
 @Component({
   selector: 'app-producto-editar',
@@ -18,7 +19,8 @@ export class ProductoEditarComponent implements OnInit{
   constructor(private productoService: ProductoService,
     private router: Router,
     private routerAct: ActivatedRoute,
-    private dataService: DataService
+    private dataService: DataService,
+    private toast: ToastService
   ) { }
 
   ngOnInit(): void {
@@ -49,9 +51,10 @@ export class ProductoEditarComponent implements OnInit{
   fnGuardar(myForm: NgForm){
     this.productoService.EditarDatos(this.producto).subscribe({
       next: (data) =>{
+        this.toast.success('Producto editado.');
         this.router.navigate(['/listar']);
       },error: (e) =>{
-        alert('No se pudo registrar.');
+        this.toast.error('Ups! No se pudo editar producto.');
         console.log(e);
       }
     })

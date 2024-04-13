@@ -14,6 +14,7 @@ import { FormErrorMessageComponent } from './shared/form-error-message/form-erro
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { CommonModule , DatePipe } from '@angular/common';
 import { FiltroPipe } from './core/pipes/FiltroPipe';
+import { NgToastModule } from 'ng-angular-popup'
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FiltroPipe } from './core/pipes/FiltroPipe';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    NgToastModule
   ],
   providers: [
     {

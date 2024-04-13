@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Producto } from 'src/app/core/models/producto';
 import { DataService } from 'src/app/core/services/data.service';
 import { ProductoService } from 'src/app/core/services/producto.service';
+import { ToastService } from 'src/app/core/services/toast.service';
 
 @Component({
   selector: 'app-producto-listar',
@@ -19,7 +20,8 @@ export class ProductoListarComponent implements OnInit{
 
   constructor(private productoService: ProductoService,
     private router: Router,
-    private dataService: DataService
+    private dataService: DataService,
+    private toast: ToastService
   ) { }
 
   ngOnInit(): void {
@@ -36,7 +38,7 @@ export class ProductoListarComponent implements OnInit{
         this.productos = data.map(item => ({ ...item, showMenu: false }));
         this.dataService.setData(this.productos);
       },error: (e) =>{
-        alert('No se pudieron cargar datos de los productos.');
+        this.toast.error('Ups! No se cargaron productos.');
         console.log(e);
       }
     })
@@ -71,10 +73,11 @@ export class ProductoListarComponent implements OnInit{
         if(e.status == 200){
           this.fnListarTodos();
           this.fnCancelarEliminar();
+          this.toast.success('Producto eliminado.');
         }else  if(e.status == 404){
-          alert('No se encontro producto.');
+          this.toast.info('Ups! No se pudo encontro producto.');
         }else{
-          alert('No se pudo eliminar producto.');
+          this.toast.error('Ups! No se pudo eliminar producto.');
         }
         console.log(e);
       }
