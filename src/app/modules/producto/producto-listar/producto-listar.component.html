@@ -1,0 +1,87 @@
+<div class="extra-row">
+  <div class="search-container">
+    <input type="text" class="search" placeholder="Search..."
+    #txtSearch
+    (keyup)="onSearch( txtSearch.value)">
+  </div>
+  <a [routerLink]="['/nuevo']" class="btn-yellow">Agregar</a>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="table-header">
+          <tr>
+            <th>Logo</th>
+            <th>Nombre del Producto</th>
+            <th>Descripción</th>
+            <th>Fecha de liberación</th>
+            <th>Fecha de reestructuración</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of productos | filtro:page:search:nRegistro">
+            <td>
+              <img [src]="item.logo" (error)="fnHandleImageError($event)" alt="Imagen">
+            </td>
+            <td>{{item.name}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.date_release | date:'dd/MM/yyyy' }}</td>
+            <td>{{item.date_revision | date:'dd/MM/yyyy' }}</td>
+            <td>
+              <div class="dropdown">
+                <button (click)="item.showMenu = !item.showMenu">
+                  <i class="fa fa-ellipsis-v"></i>
+                </button>
+                <div class="dropdown-menu" *ngIf="item.showMenu">
+                  <button (click)="fnEditar(item)">Editar</button>
+                  <button (click)="fnEliminar(item)">Eliminar</button>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <tr *ngIf="productos.length == 0 || (productos | filtro:page:search:nRegistro).length == 0" >
+            <td colspan="5" class="text-center">No se encontraron registros</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="extra-row">
+        <div class="search-container" *ngIf="productos.length > 0 || (productos | filtro:page:search:nRegistro).length > 0">
+          <strong>{{ productos.length + ' ' + (productos.length == 1 ? 'resultado': 'resultados')}}</strong>
+          <button class="btn btn-default"
+              (click)="prevPage()">
+              Anterior
+          </button>
+          &nbsp;
+          <button class="btn btn-default"
+                  (click)="nextPage()"
+                  [disabled]="(productos | filtro:page:search:nRegistro).length / nRegistro < 1">
+              Siguiente
+          </button>
+        </div>
+        <select [(ngModel)]="nRegistro" class="form-control"  *ngIf="((productos | filtro:page:search:nRegistro).length > 0)">
+          <option *ngFor="let page of pagesArr" [value]="page">{{ page }}</option>
+        </select>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div id="confEliminarModal" class="modal">
+  <div class="modal-content">
+    <span class="close" (click)="fnCancelarEliminar()">&times;</span>
+    <p>¿Estás seguro de eliminar el producto {{producto.name}}?</p>
+    <div class="modal-actions">
+      <button class="btn-default" (click)="fnCancelarEliminar()">Cancelar</button>
+      &nbsp;
+      <button class="btn-yellow" (click)="fnConfirmarEliminar()">Eliminar</button>
+    </div>
+  </div>
+</div>
+

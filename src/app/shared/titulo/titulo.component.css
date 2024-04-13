@@ -1,0 +1,22 @@
+.header {
+  width: 100pv; /* Ancho completo */
+  height: 50px; /* Altura aproximada de la línea */
+  background-color: #fff; /* Color de fondo rojo */
+  display: flex; /* Utilizar el modelo de caja flexible */
+  justify-content: center; /* Centrar horizontalmente los elementos */
+  align-items: center; /* Centrar verticalmente los elementos */
+  padding: 20px 40px; /* Espaciado interno */
+}
+
+/* Estilos para la imagen del logo */
+.logo {
+  height: 50px; /* Altura de la imagen */
+  margin-right: 10px; /* Espacio a la derecha del logo */
+}
+
+/* Estilos para el texto "BANCO" */
+.title {
+  font-size: 24px; /* Tamaño de fuente */
+  font-weight: bold; /* Texto en negrita */
+  color: #1A164B; /* Color del texto blanco */
+}

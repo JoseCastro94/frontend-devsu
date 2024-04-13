@@ -1,0 +1,25 @@
+<div class="text-danger" *ngIf="control.invalid && (control.dirty || control.touched)">
+  <div *ngIf="control.errors?.['required']">
+    {{inputRequired? inputRequired: 'El campo es requerido'}}
+  </div>
+
+  <div *ngIf="control.errors?.['min']">
+    {{inputMin}}
+  </div>
+
+  <div *ngIf="control.errors?.['minlength']">
+    Debe contener por lo menos {{control.getError('minlength').requiredLength}} caracteres
+  </div>
+
+  <div *ngIf="control.errors?.['maxlength']">
+    Debe contener como máximo {{control.getError('maxlength').requiredLength}} caracteres
+  </div>
+
+  <div *ngIf="control.errors?.['fechaInvalida']">
+    Debe ser igual o mayor a la fecha actual.
+  </div>
+
+  <div *ngIf="control.errors?.['fechaInvalidaRevision']">
+    Debe ser posterior como minimo 1 año a la fecha de liberación.
+  </div>
+</div>

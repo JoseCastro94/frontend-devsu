@@ -1,0 +1,94 @@
+<div class="card">
+  <div class="card-body">
+    <div class="form-container">
+      <form class="form" (ngSubmit)="fnVerificarGuardar(datosForm)" #datosForm="ngForm">
+        <div class="form-title">Formulario de registro</div>
+        <hr />
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="id">ID:</label>
+            <input type="text" class="form-control"
+            [ngClass]="{'is-invalid': !id.valid && (id.dirty || id.touched)}"
+            id="id" name="id" #id="ngModel"
+            required [(ngModel)]="producto.id"
+            minlength="3" maxlength="10"
+            >
+            <app-form-error-message [control]="id" inputRequired="ID no válido!" />
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control"
+            [ngClass]="{'is-invalid': !nombre.valid && (nombre.dirty || nombre.touched)}"
+            id="nombre" name="nombre" #nombre="ngModel"
+            required [(ngModel)]="producto.name"
+            minlength="5" maxlength="100"
+            >
+            <app-form-error-message [control]="nombre" inputRequired="Nombre no válido!" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="descripcion">Descripción:</label>
+            <input type="text" class="form-control"
+            [ngClass]="{'is-invalid': !descripcion.valid && (descripcion.dirty || descripcion.touched)}"
+            id="descripcion" name="descripcion" #descripcion="ngModel"
+            required [(ngModel)]="producto.description"
+            minlength="10" maxlength="200"
+            >
+            <app-form-error-message [control]="descripcion" inputRequired="Descripción no válido!" />
+          </div>
+          <div class="form-group col-md-6">
+            <label for="logo">Logo:</label>
+            <input type="text" class="form-control"
+            id="logo" name="logo"
+            [ngClass]="{'is-invalid': !logo.valid && (logo.dirty || logo.touched)}"
+            id="logo" name="logo" #logo="ngModel"
+            required [(ngModel)]="producto.logo"
+            >
+            <app-form-error-message [control]="logo" inputRequired="Logo no válido!" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-md-6 col-12">
+            <label for="fechaLiberacion">Fecha de Liberación:</label>
+            <input type="date" class="form-control"
+            [ngClass]="{'is-invalid': !fechaLiberacion.valid && (fechaLiberacion.dirty || fechaLiberacion.touched)}"
+            id="fechaLiberacion" name="fechaLiberacion" #fechaLiberacion="ngModel" required
+            [(ngModel)]="producto.date_release"
+            (ngModelChange)="fnValidarFechaLiberacion(datosForm)">
+
+            <app-form-error-message [control]="fechaLiberacion" inputRequired="Fecha liberación no válido!" />
+          </div>
+          <div class="col-md-6 col-12">
+            <label for="fechaRevision">Fecha de Revisión:</label>
+            <input type="date" class="form-control" id="fechaRevision" name="fechaRevision"
+            onkeydown="return false"
+           [disabled]="!fechaLiberacion.valid"
+           [min]="minFechaRevision" required
+           (ngModelChange)="fnValidarFechaRevision(datosForm)"
+           (input)="fnValidarFechaRevision(datosForm)"
+           (ngModelChange)="fnValidarFechaLiberacion(datosForm)"
+           (input)="fnValidarFechaLiberacion(datosForm)"
+           [(ngModel)]="producto.date_revision" #fechaRevision="ngModel">
+           <app-form-error-message [control]="fechaRevision"
+            inputRequired="Fecha revisión no válida!"
+            inputMin="Debe ser mayor a un año de la fecha de liberación" />
+          </div>
+
+        </div>
+
+        <div class="form-row">
+          <div class="col-md-6">
+            <button type="reset" class="btn btn-reiniciar">Reiniciar</button>
+          </div>
+          <div class="col-md-6">
+            <button type="submit" class="btn btn-enviar" [disabled]="!datosForm.form.valid">Enviar</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

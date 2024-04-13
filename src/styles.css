@@ -1,1 +1,134 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+  background-color: #DFE7EB;
+  font-family: Arial, sans-serif;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  margin: 30px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -5px;
+  margin-left: -5px;
+}
+
+.form-group {
+  flex: 0 0 calc(50% - 20px);
+  max-width: calc(50% - 20px);
+  margin-bottom: 15px;
+}
+
+.form-control {
+  width: calc(100% - 40px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  margin-right: 5px;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.btn-reiniciar  {
+  color: #212529;
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+  border: 1px solid #ccc;
+}
+
+.btn-enviar {
+  color: #212529;
+  background-color: #ffc107;
+  border-color: #ffc107;
+  border: 1px solid #ffc107;
+
+}
+
+.col-md-6 {
+  flex: 0 0 calc(50% - 20px);
+  max-width: calc(50% - 20px);
+  margin-bottom: 15px;
+
+}
+
+.is-invalid {
+  border: 1px solid red;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 576px) {
+  .col-sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 767px) {
+  .form-row {
+    flex-direction: column;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .form-group {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 15px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+}
