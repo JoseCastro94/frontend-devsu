@@ -13,7 +13,7 @@ import { LoadingInterceptorService } from './core/interceptors/loading-intercept
 import { FormErrorMessageComponent } from './shared/form-error-message/form-error-message.component';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { CommonModule , DatePipe } from '@angular/common';
-import { FiltroPipe } from './core/pipes/FiltroPipe';
+import { FiltroPipe } from './core/pipes/filtroPipe';
 import { NgToastModule } from 'ng-angular-popup'
 
 @NgModule({

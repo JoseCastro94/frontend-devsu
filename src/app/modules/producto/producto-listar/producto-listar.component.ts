@@ -29,7 +29,7 @@ export class ProductoListarComponent implements OnInit{
   }
 
   fnEditar(item: Producto) {
-    this.router.navigate(['/editar/' + item.id]);
+    this.router.navigateByUrl('/editar/' + item.id, { skipLocationChange: false });
   }
 
   fnListarTodos() {

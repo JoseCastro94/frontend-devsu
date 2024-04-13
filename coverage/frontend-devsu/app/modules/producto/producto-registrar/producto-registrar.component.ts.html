@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25.64% </span>
+                <span class="strong">48.71% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/39</span>
+                <span class='fraction'>19/39</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/12</span>
+                <span class='fraction'>8/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25.64% </span>
+                <span class="strong">48.71% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/39</span>
+                <span class='fraction'>19/39</span>
             </div>
         
             
@@ -169,31 +169,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -241,10 +241,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Component, OnInit } from '@angular/core';
@@ -273,19 +273,19 @@ export class ProductoRegistrarComponent implements OnInit{
   ngOnInit(): void {
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  fnGuardar(</span>myForm: NgForm){
-<span class="cstat-no" title="statement not covered" >    this.isLoading = true;</span>
-<span class="cstat-no" title="statement not covered" >    this.productoService.GuardarDatos(this.producto).pipe(</span>
-      finalize(<span class="fstat-no" title="function not covered" >() =</span>&gt; {
-<span class="cstat-no" title="statement not covered" >        this.isLoading = false;</span>
+  fnGuardar(myForm: NgForm){
+    this.isLoading = true;
+    this.productoService.GuardarDatos(this.producto).pipe(
+      finalize(() =&gt; {
+        this.isLoading = false;
       })
     ).subscribe({
       next: <span class="fstat-no" title="function not covered" >(d</span>ata) =&gt;{
 <span class="cstat-no" title="statement not covered" >        this.toast.success('Producto registrado.');</span>
 <span class="cstat-no" title="statement not covered" >        this.router.navigate(['/listar']);</span>
-      },error: <span class="fstat-no" title="function not covered" >(e</span>) =&gt;{
-<span class="cstat-no" title="statement not covered" >        this.toast.error('Ups! No se pudo registrar producto.');</span>
-<span class="cstat-no" title="statement not covered" >        console.log(e);</span>
+      },error: (e) =&gt;{
+        this.toast.error('Ups! No se pudo registrar producto.');
+        console.log(e);
       }
     })
   }
@@ -332,11 +332,11 @@ export class ProductoRegistrarComponent implements OnInit{
     }
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  fnCalcularFechaMinimaRevision(</span>fechaLiberacion: Date) {
-    const fechaMinimaRevision = <span class="cstat-no" title="statement not covered" >new Date(fechaLiberacion);</span>
-<span class="cstat-no" title="statement not covered" >    fechaMinimaRevision.setFullYear(fechaMinimaRevision.getFullYear() + 1);</span>
-    const formattedDate = <span class="cstat-no" title="statement not covered" >fechaMinimaRevision.toISOString().split('T')[0];</span>
-<span class="cstat-no" title="statement not covered" >    return formattedDate;</span>
+  fnCalcularFechaMinimaRevision(fechaLiberacion: Date) {
+    const fechaMinimaRevision = new Date(fechaLiberacion);
+    fechaMinimaRevision.setFullYear(fechaMinimaRevision.getFullYear() + 1);
+    const formattedDate = fechaMinimaRevision.toISOString().split('T')[0];
+    return formattedDate;
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -346,7 +346,7 @@ export class ProductoRegistrarComponent implements OnInit{
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-04-13T19:44:20.269Z
+                at 2024-04-13T23:07:16.341Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for app/core/pipes/FiltroPipe.ts</title>
+    <title>Code coverage report for app/core/pipes/filtroPipe.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">app/core/pipes</a> FiltroPipe.ts</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">app/core/pipes</a> filtroPipe.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">62.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>5/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.66% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/6</span>
+                <span class='fraction'>4/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.14% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/7</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -91,16 +91,16 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">34x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">34x</span>
+<span class="cline-any cline-yes">31x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Pipe, PipeTransform } from '@angular/core';
@@ -110,17 +110,17 @@ import { Producto } from '../models/producto';
 })
 export class FiltroPipe implements PipeTransform {
 &nbsp;
-  transform( data: Producto[], page: number = <span class="branch-0 cbranch-no" title="branch not covered" >0,</span> search: string = <span class="branch-0 cbranch-no" title="branch not covered" >'' </span>, nRegistro: number = <span class="branch-0 cbranch-no" title="branch not covered" >5)</span>: Producto[] {
+  transform( data: Producto[], page: number = <span class="branch-0 cbranch-no" title="branch not covered" >0,</span> search: string = <span class="branch-0 cbranch-no" title="branch not covered" >'' </span>, nRegistro: number = 5): Producto[] {
     const pageSig = page + parseInt(nRegistro.toString());
 &nbsp;
     if ( search.length === 0 ){
       return data.slice(page, pageSig);
     }
 &nbsp;
-    const filteredArrays = <span class="cstat-no" title="statement not covered" >data.filter( <span class="fstat-no" title="function not covered" >item </span>=&gt;</span>
-<span class="cstat-no" title="statement not covered" >      item.name.toLowerCase().includes(search.toLowerCase()) ||</span>
+    const filteredArrays = data.filter( item =&gt;
+      item.name.toLowerCase().includes(search.toLowerCase()) ||
       item.description.toLowerCase().includes(search.toLowerCase()));
-<span class="cstat-no" title="statement not covered" >    return filteredArrays.slice(page, pageSig);</span>
+    return filteredArrays.slice(page, pageSig);
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -130,7 +130,7 @@ export class FiltroPipe implements PipeTransform {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-04-13T19:44:20.269Z
+                at 2024-04-13T23:07:16.341Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
